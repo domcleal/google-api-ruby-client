@@ -10,7 +10,7 @@ module Google
     #
     class Railtie < Rails::Railtie
       initializer 'google-api-client' do |app|
-        Google::APIClient.logger = app.logger
+        Google::APIClient.logger = app.respond_to?(:logger) ? app.logger : Rails.logger
       end
     end
   end
